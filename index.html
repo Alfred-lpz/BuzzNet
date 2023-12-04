@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <img src="GT.png" alt="Georgia Tech Logo" id="gt-logo">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuzzNet</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="script.js"></script>    
+
+</head>
+<body>
+
+    <div id="login-form-container">
+        <!-- Login Form Here -->
+        <h2 id="login-title">Login</h2>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <!-- All Existing Content Here -->
+        <!-- Your existing content goes here, wrapped in this div -->
+        <div id="app">
+            <header>
+                <h1>BuzzNet</h1>
+            </header>
+        
+            <nav>
+                <button onclick="showPage('home')">Home</button>
+                <button onclick="showPage('discussion')">Discussion Board</button>
+                <button onclick="showPage('friends')">Friends</button> <!-- New Friends Button -->
+                <button onclick="showPage('privacy')">Privacy Policy</button>
+                <button onclick="showPage('push')">Advertising Push Mechanism</button>
+                <button id="logout-button">Logout</button>
+            </nav>
+        
+                <div id="privacy" class="page" style="display: none;">
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                    <h2>Privacy Policy</h2>
+                    <p style="text-align: left;">Welcome to BuzzNet, the all-in-one app designed for the vibrant community of Georgia Tech students. Your privacy is of utmost importance to us. This Privacy Policy outlines the types of information we collect, how it's used, and the measures we take to protect your personal information.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>1. Information Collection</h3>
+                        <p style="text-align: left;">a. Personal Information: When you register for BuzzNet, we may collect personal information that you provide, such as your name, email address, and student ID.</p>
+                        <p style="text-align: left;">b. Usage Data: We collect non-identifiable data related to how you use the app, such as features accessed and time spent on the app.</p>
+                        <p style="text-align: left;">c. Location Information: With your consent, we may collect precise location data to enable location-based features.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>2. Use of Information</h3>
+                        <p style="text-align: left;">a. Service Provision: Your information helps us deliver and improve our services, such as chat, forums, and video calls.</p>
+                        <p style="text-align: left;">b. Communication: We may use your information to communicate important app updates or policy changes.</p>
+                        <p style="text-align: left;">c. Improvement and Development: Usage data helps us analyze app performance and user engagement to develop new features.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>3. Sharing of Information</h3>
+                        <p style="text-align: left;">a. User Consent: We only share personal information with third parties when we have your explicit consent.</p>
+                        <p style="text-align: left;">b. Legal Requirements: We may disclose your information if required by law or in response to legal processes.</p>
+                        <p style="text-align: left;">c. Aggregate Information: We may share non-personal, aggregate data for research or statistical purposes.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>4. Data Protection</h3>
+                        <p style="text-align: left;">We implement robust security measures to safeguard your personal data from unauthorized access, alteration, or destruction.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>5. User Rights</h3>
+                        <p style="text-align: left;">a. Access and Control: You have the right to access and control the personal information we hold about you.</p>
+                        <p style="text-align: left;">b. Opt-Out: You can opt-out of data collection or delete your account at any time.</p>
+                        <p style="text-align: left;">c. Updates: You can update your personal information to keep it accurate and current.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>6. Children's Privacy</h3>
+                        <p style="text-align: left;">BuzzNet is not intended for individuals under the age of 13. We do not knowingly collect personal information from children.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>7. Changes to This Policy</h3>
+                        <p style="text-align: left;">We may update this Privacy Policy periodically. We will notify you of significant changes and obtain your consent where required.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>8. Contact Us</h3>
+                        <p style="text-align: left;">If you have any questions about this policy or our privacy practices, please contact [Contact Information].</p>
+                    </div>
+                    
+                    <div id="emtpty-div"></div>
+                    
+                    
+                </div>
+
+                <div id="push" class="page" style="display: none;">
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h2>BuzzNet Advertising Push Mechanism</h2>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>Objective</h3>
+                        <p style="text-align: left;">To engage Georgia Tech students with relevant, timely, and non-intrusive ads that enhance their experience on BuzzNet while providing value to advertisers.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>Mechanism Design</h3>
+                        <p style="text-align: left;">User Profile Analysis: Ads are tailored based on the user's profile, preferences, and in-app behavior to ensure relevance.</p>
+                        <p style="text-align: left;">Ad Frequency Control: Users will encounter a limited number of ads per day to minimize disruption and maintain a positive user experience.</p>
+                        <p style="text-align: left;">Location-Based Ads: With user consent, location data can trigger ads for local events, offers, and services that might interest Georgia Tech students.</p>
+                        <p style="text-align: left;">Time-Sensitive Ads: Ads related to time-bound events or offers will be scheduled appropriately to ensure they are seen at the most opportune moments.</p>
+                        <p style="text-align: left;">Ad Content Review: All ads must pass a strict content review process to align with Georgia Tech's values and community standards.</p>
+                        <p style="text-align: left;">User Feedback Integration: Users can provide feedback on ads, and this data will be used to refine ad targeting and quality.</p>
+                        <p style="text-align: left;">Opt-Out Option: Users have the option to opt-out of personalized ads, although generic ads may still be shown.</p>
+                        <p style="text-align: left;">Transparency and Control: Users can access information on why a particular ad was shown and manage their ad preferences.</p>
+
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>User Engagement Strategies</h3>
+                        <p style="text-align: left;">Rewards for Engagement: Users can receive in-app rewards or benefits, like extended functionality, for engaging with ads.</p>
+                        <p style="text-align: left;">Interactive Ads: Incorporate interactive elements such as polls or quizzes to increase engagement while providing value to the user.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>Data Privacy Assurance</h3>
+                        <p style="text-align: left;">No Data Sale: BuzzNet will not sell personal data to advertisers or third parties.</p>
+                        <p style="text-align: left;">Anonymization: Personal data used for ad targeting is anonymized to prevent identification of individual users.</p>
+                        <p style="text-align: left;">Security Measures: Implement robust security measures to protect user data from unauthorized access or breaches.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>Compliance and Ethics</h3>
+                        <p style="text-align: left;">Ad Policies: Ensure all ads comply with legal standards, ethical guidelines, and Georgia Tech's policies.</p>
+                        <p style="text-align: left;">Regular Audits: Conduct regular audits of the ad mechanism to ensure compliance and user satisfaction.</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: 500px; margin-left: auto; margin-right: auto;">
+                        <h3>Feedback Loop</h3>
+                        <p style="text-align: left;">Surveys and Studies: Regularly survey students to gather feedback on the ad experience and make adjustments accordingly.</p>
+                        <p style="text-align: left;">Analytics: Use analytics to measure ad effectiveness and user engagement, feeding this data back into the system to improve the ad mechanism.</p>
+                    </div>
+
+                    <div id="emtpty-div"></div>
+
+                </div>
+
+        
+                <div id="discussion" class="page" style="display: none;">
+                    <h2>Discussion Board</h2>
+            
+                    <div id="discussion-categories">
+                        <div class="discussion-category">
+                            <i class="fas fa-book"></i>
+                            <h3>Academic</h3>
+                        </div>
+                        
+                        <div class="discussion-category">
+                            <i class="fas fa-basketball-ball"></i>
+                            <h3>Sports</h3>
+                        </div>
+                        
+                        <div class="discussion-category">
+                            <i class="fas fa-glass-cheers"></i>
+                            <h3>Party</h3>
+                        </div>
+                        
+                        <!-- Add more categories as needed -->
+                    </div>
+                </div>
+        <!-- Navigation Bar Update -->
+        
+        
+        <!-- New Friends Section -->
+        <!-- Friends Section -->
+        <div id="friends" class="page" style="display: none;">
+            <h2>Friends</h2>
+            <!-- Friend Profile 1 -->
+            <div class="friend-profile">
+                <div class="profile-picture-container">
+                    <img src="lucky.jpg" alt="Friend One's Profile Picture" class="profile-picture">
+                </div>
+                <div class="profile-bio">
+                    <p>Name: Lucky</p>
+                    <p>Bio: A little cat. Cat food tasting expert at Georgia Tech</p>
+                </div>
+                <div class="profile-actions">
+                    <i class="fas fa-comment" onclick="showPage('chat')"></i> <!-- Chat Icon -->
+                    <i class="fas fa-video" id = "runCode"></i>   <!-- Video Icon -->
+                </div>
+            </div>
+            <!-- Friend Profile 2 -->
+            <div class="friend-profile">
+                <div class="profile-picture-container">
+                    <img src="xjp.jpg" alt="Friend Two's Profile Picture" class="profile-picture">
+                </div>
+                <div class="profile-bio">
+                    <p>Name: Winnie</p>
+                    <p>Bio: A political enthusiast. He majors in Electrical and Computer Engineering at Georgia Tech.</p>
+                </div>
+                <div class="profile-actions">
+                    <i class="fas fa-comment"></i> <!-- Chat Icon -->
+                    <i class="fas fa-video"></i>   <!-- Video Icon -->
+        
+        
+                </div>
+            </div>
+            <!-- Additional friend profiles can be added following the same pattern -->
+            <div id="result"></div>
+        </div>
+        
+        <div id="home" class="page">
+            <h2>Home</h2>
+            
+            <!-- Profile Section -->
+            <div id="profile-section">
+                <div id="profile-image-container">
+                    <img src="me.jpg" alt="Profile Image" id="profile-image">
+                </div>
+                <div id="profile-info">
+                    <h3>Username</h3>
+                    <p>Major: Computer Science</p>
+                    <p>Year: Sophomore</p>
+                </div>
+            </div>
+            <hr class="separator"> <!-- Separator Line -->
+        
+            <!-- Posting List Section -->
+            <div id="posting-list">
+                <h3>Posts</h3>
+                <!-- Individual posts will appear here -->
+            </div>
+
+        </div>
+
+        <div id="chat" class="page" style="display: none;">
+            <h3>Chat</h3>
+            <div id="chat-container">
+                <button id="exit-button" onclick="showPage('friends')">Exit</button>
+                <div id="message-area"></div>
+                <input type="text" id="message-input" placeholder="Type a message...">
+                <button id="send-button">Send</button>
+            </div>
+            <div id="emtpty-div"></div>
+        </div>
+        
+        
+    </div>
+
+<script src="app.js"></script>
+<footer>
+    <div id="gt-symbols"></div>
+</footer>
+
+</body>
+</html>

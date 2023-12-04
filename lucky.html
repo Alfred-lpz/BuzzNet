@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <img src="GT.png" alt="Georgia Tech Logo" id="gt-logo">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuzzNet</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="script.js"></script>  
+
+</head>
+<body>
+
+        <!-- All Existing Content Here -->
+        <!-- Your existing content goes here, wrapped in this div -->
+        <div id="app">
+            <header>
+                <h1>BuzzNet</h1>
+            </header>
+        
+            <nav>
+                <button onclick="location.href='index.html'">Back</button>
+                <button onclick="showPage('chat')">Discussion Board</button>
+                <!-- <button onclick="showPage('discussion')">Discussion Board</button>
+                <button onclick="showPage('friends')">Friends</button> --> <!-- New Friends Button -->
+                
+            </nav>
+        
+        <div id="home" class="page">
+            <h2>Home</h2>
+            
+            <!-- Profile Section -->
+            <div id="profile-section">
+                <div id="profile-image-container">
+                    <img src="lucky.jpg" alt="Profile Image" id="profile-image">
+                </div>
+                <div id="profile-info">
+                    <p>Name: Lucky</p>
+                    <p>Bio: A little cat. Cat food tasting expert at Georgia Tech</p>
+                </div>
+            </div>
+            <hr class="separator"> <!-- Separator Line -->
+        
+            <!-- Posting List Section -->
+            <div id="posting-list">
+                <h3>Posts</h3>
+                <!-- Individual posts will appear here -->
+            </div>
+
+            <div id="chat-container">
+            <div id="message-area"></div>
+            <input type="text" id="message-input" placeholder="Type a message...">
+            <button id="send-button">Send</button>
+            </div>
+        </div>
+
+        <div id="chat" class="page">
+            <h2>Home</h2>
+            
+            <!-- Profile Section -->
+            <div id="profile-section">
+                <div id="profile-image-container">
+                    <img src="lucky.jpg" alt="Profile Image" id="profile-image">
+                </div>
+                <div id="profile-info">
+                    <p>Name: Lucky</p>
+                    <p>Bio: A little cat. Cat food tasting expert at Georgia Tech</p>
+                </div>
+            </div>
+            <hr class="separator"> <!-- Separator Line -->
+        
+            <!-- Posting List Section -->
+            <div id="posting-list">
+                <h3>Posts</h3>
+                <!-- Individual posts will appear here -->
+            </div>
+
+            <div id="chat-container">
+            <div id="message-area"></div>
+            <input type="text" id="message-input" placeholder="Type a message...">
+            <button id="send-button">Send</button>
+            </div>
+        </div>
+
+<script src="app.js"></script>
+<footer>
+    <div id="gt-symbols"></div>
+</footer>
+
+</body>
+</html>
