@@ -8,6 +8,31 @@ function showPage(pageId) {
   activePage.style.display = "block";
 }
 
+function fetchAndDisplayPosts() {
+  fetch('/posts')
+    .then(response => response.json())
+    .then(posts => {
+      const postingList = document.getElementById("posting-list");
+      postingList.innerHTML = ''; // Clear existing posts
+      posts.forEach(post => {
+        const postElement = document.createElement("div");
+        postElement.classList.add("post");
+
+        const postText = document.createElement("p");
+        postText.textContent = post.text;
+        postElement.appendChild(postText);
+
+        if (post.image_path) {
+          const postImage = document.createElement("img");
+          postImage.src = post.image_path;
+          postElement.appendChild(postImage);
+        }
+
+        postingList.appendChild(postElement);
+      });
+    });
+}
+
 document.getElementById("runCode").addEventListener("click", function () {
   fetch("/run-cpp-code")
     .then((response) => response.text())
@@ -62,6 +87,7 @@ window.onload = function () {
     // Hide the main content
     document.getElementById("main-content").style.display = "none";
   }
+  fetchAndDisplayPosts(); // update the post
 };
 
 document.getElementById("send-button").addEventListener("click", sendMessage);
@@ -87,3 +113,24 @@ function displayMessage(message) {
   messageArea.appendChild(messageDiv);
   messageArea.scrollTop = messageArea.scrollHeight; // Scroll to the bottom
 }
+
+// Update the form submission handler to refresh the posts after submission
+document.getElementById("post-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  var formData = new FormData();
+  formData.append('text', document.getElementById("post-text").value);
+  var imageFile = document.getElementById("post-image").files[0];
+  if (imageFile) {
+      formData.append('image', imageFile);
+  }
+
+  fetch('/post', {
+      method: 'POST',
+      body: formData
+  })
+  .then(response => response.text())
+  .then(data => {
+      fetchAndDisplayPosts(); // Refresh the posts after submission
+  });
+});

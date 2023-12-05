@@ -38,6 +38,7 @@ html {
   border-radius: 5px;
   background-color: #fff;
 }
+
 /* Input fields styling */
 #login-form input[type="text"],
 #login-form input[type="password"] {
@@ -373,4 +374,38 @@ footer {
 #privacy {
   display: flex; /* Enable Flexbox */
   flex-direction: column; /* Stack children vertically */
+}
+
+
+/* Styles for the Posts Section */
+#posting-list {
+  width: 100%;
+  max-width: 600px; /* Adjust the maximum width as needed */
+  margin: 20px auto; /* Center the posts section */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post {
+  background-color: white; /* White background for each post */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a lifted effect */
+  margin-bottom: 20px; /* Space between posts */
+  padding: 15px; /* Padding inside each post */
+  width: 100%; /* Full width of the container */
+  text-align: left; /* Align text to the left */
+}
+
+.post img {
+  max-width: 100%; /* Ensure image does not exceed the width of the post */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Slightly rounded corners for the image */
+  margin-top: 10px; /* Space between text and image */
+}
+
+.post p {
+  margin: 0; /* Remove default margin from paragraphs */
+  color: #333; /* Dark text color for readability */
+  font-size: 1rem; /* Adjust the font size as needed */
 }

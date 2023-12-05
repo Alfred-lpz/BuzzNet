@@ -1,8 +1,12 @@
 const express = require('express');
 const { exec } = require('child_process');
+const multer = require('multer');
+const sqlite3 = require('sqlite3').verbose();
 const app = express();
 const port = 3000;
 
+
+// For video
 app.use(express.static('.')); // Serve static files
 app.get('/run-cpp-code', (req, res) => {
     exec('./Sender 8080', (error, stdout, stderr) => {
@@ -27,6 +31,51 @@ app.get('/run-cpp-code', (req, res) => {
 
     //res.send("Sender and Receiver started");
 });
+
+
+// For posting
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+});
+
+const upload = multer({ storage: storage });
+
+// Initialize SQLite database
+const db = new sqlite3.Database('buzznet.db');
+
+app.use(express.static('.')); // Serve static files
+
+app.post('/post', upload.single('image'), (req, res) => {
+    const text = req.body.text;
+    const file = req.file;
+    const userIp = req.ip;
+
+    db.run(`INSERT INTO posts (text, image_path, user_ip) VALUES (?, ?, ?)`, [text, file ? file.path : null, userIp], function(err) {
+        if (err) {
+            return console.error(err.message);
+        }
+        console.log(`A row has been inserted with rowid ${this.lastID}`);
+        res.send('Post received');
+    });
+});
+
+// Endpoint to get posts
+app.get('/posts', (req, res) => {
+    db.all(`SELECT id, text, image_path FROM posts`, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+});
+
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
