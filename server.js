@@ -1,13 +1,15 @@
 const express = require('express');
 const { exec } = require('child_process');
 const multer = require('multer');
+const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const app = express();
 const port = 3000;
 
-
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 // For video
-app.use(express.static('.')); // Serve static files
+app.use('/uploads', express.static('uploads')); // Serve images from the uploads directory
 app.get('/run-cpp-code', (req, res) => {
     exec('./Sender 8080', (error, stdout, stderr) => {
         if (error) {
@@ -76,6 +78,17 @@ app.get('/posts', (req, res) => {
     });
 });
 
+// Delete post
+app.delete('/delete-post/:id', (req, res) => {
+    const postId = req.params.id;
+    db.run(`DELETE FROM posts WHERE id = ?`, postId, function(err) {
+      if (err) {
+        res.status(500).send(err.message);
+        return;
+      }
+      res.send('Post deleted');
+    });
+  });
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

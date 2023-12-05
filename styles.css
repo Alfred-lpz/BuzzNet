@@ -385,9 +385,12 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 100px; /* Adjust this value based on the height of your footer */
+
 }
 
 .post {
+  position: relative; /* For positioning the delete icon */
   background-color: white; /* White background for each post */
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a lifted effect */
@@ -398,7 +401,7 @@ footer {
 }
 
 .post img {
-  max-width: 100%; /* Ensure image does not exceed the width of the post */
+  width: 100%; /* Ensure image does not exceed the width of the post */
   height: auto; /* Maintain aspect ratio */
   border-radius: 8px; /* Slightly rounded corners for the image */
   margin-top: 10px; /* Space between text and image */
@@ -408,4 +411,18 @@ footer {
   margin: 0; /* Remove default margin from paragraphs */
   color: #333; /* Dark text color for readability */
   font-size: 1rem; /* Adjust the font size as needed */
+  text-align: center; /* Center text in the post */
+}
+
+.post-text-container {
+  position: relative; /* Needed for absolute positioning of the icon */
+  text-align: center;
+}
+
+.fa-trash {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: red;
+  cursor: pointer;
 }

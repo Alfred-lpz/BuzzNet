@@ -10,7 +10,12 @@ function showPage(pageId) {
 
 function fetchAndDisplayPosts() {
   fetch('/posts')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then(posts => {
       const postingList = document.getElementById("posting-list");
       postingList.innerHTML = ''; // Clear existing posts
@@ -18,9 +23,23 @@ function fetchAndDisplayPosts() {
         const postElement = document.createElement("div");
         postElement.classList.add("post");
 
+        // Create a container for text and delete icon
+        const textContainer = document.createElement("div");
+        textContainer.classList.add("post-text-container");
+
         const postText = document.createElement("p");
         postText.textContent = post.text;
-        postElement.appendChild(postText);
+        textContainer.appendChild(postText);
+
+        // Add a trash bin icon for deletion
+        const deleteIcon = document.createElement("i");
+        deleteIcon.classList.add("fas", "fa-trash"); // Assuming you're using Font Awesome
+        deleteIcon.style.cursor = "pointer";
+        deleteIcon.onclick = function() { deletePost(post.id); };
+        textContainer.appendChild(deleteIcon);
+
+        postElement.appendChild(textContainer);
+
 
         if (post.image_path) {
           const postImage = document.createElement("img");
@@ -30,6 +49,23 @@ function fetchAndDisplayPosts() {
 
         postingList.appendChild(postElement);
       });
+    })
+    .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+    });
+}
+
+// delete post
+function deletePost(postId) {
+  fetch(`/delete-post/${postId}`, { method: 'DELETE' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      fetchAndDisplayPosts(); // Refresh the posts after deletion
+    })
+    .catch(error => {
+      console.error('Error:', error);
     });
 }
 
@@ -129,8 +165,16 @@ document.getElementById("post-form").addEventListener("submit", function(event) 
       method: 'POST',
       body: formData
   })
-  .then(response => response.text())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.text();
+  })
   .then(data => {
-      fetchAndDisplayPosts(); // Refresh the posts after submission
+    fetchAndDisplayPosts(); // Refresh the posts after submission
+  })
+  .catch(error => {
+    console.error('Error:', error);
   });
 });
