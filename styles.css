@@ -38,7 +38,10 @@ html {
   border-radius: 5px;
   background-color: #fff;
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> parent of 3407065 (Final)
 /* Input fields styling */
 #login-form input[type="text"],
 #login-form input[type="password"] {
@@ -200,13 +203,21 @@ nav button:hover {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+<<<<<<< HEAD
+  background-color: rgb(196, 196, 196); /* White background */
+=======
   background-color: white; /* White background */
+>>>>>>> parent of 3407065 (Final)
   padding: 20px; /* Added padding */
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a lifted effect */
 }
 
 #profile-image-container {
+<<<<<<< HEAD
+  text-align: center;
+=======
+>>>>>>> parent of 3407065 (Final)
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -215,6 +226,10 @@ nav button:hover {
 }
 
 #profile-image {
+<<<<<<< HEAD
+  text-align: center;
+=======
+>>>>>>> parent of 3407065 (Final)
   width: 100%;
 }
 
@@ -310,7 +325,10 @@ footer {
 #exit-button:hover {
   background-color: #ccc; /* Darken the button on hover */
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> parent of 3407065 (Final)
 #message-area {
   flex-grow: 1; /* Allow message area to grow and take available space */
   height: 200px; /* Fixed height for message area */
@@ -321,6 +339,39 @@ footer {
   border-radius: 6px;
   background-color: #fff;
 }
+<<<<<<< HEAD
+#message-area-user {
+  flex-grow: 1; /* Allow message area to grow and take available space */
+  height: 200px; /* Fixed height for message area */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 6px;
+  background-color: #fff;
+}
+#message-area-lucky {
+  flex-grow: 1; /* Allow message area to grow and take available space */
+  height: 200px; /* Fixed height for message area */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 6px;
+  background-color: #fff;
+}
+#message-area-winnie {
+  flex-grow: 1; /* Allow message area to grow and take available space */
+  height: 200px; /* Fixed height for message area */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 6px;
+  background-color: #fff;
+}
+=======
+>>>>>>> parent of 3407065 (Final)
 
 #message-input {
   width: calc(
@@ -357,16 +408,43 @@ footer {
 .message-sent {
   text-align: right; /* Aligns text to the right */
   width: 100%; /* Ensures the div takes full width */
+<<<<<<< HEAD
+
+}
+
+/* You can also add additional styling for message bubbles */
+.message-sent .message-content-sent {
+=======
 }
 
 /* You can also add additional styling for message bubbles */
 .message-sent .message-content {
+>>>>>>> parent of 3407065 (Final)
   display: inline-block;
   padding: 5px 10px;
   border-radius: 12px;
   background-color: #dcf8c6; /* A light green background for sent messages */
+<<<<<<< HEAD
+  margin-right: auto; /* Pushes the message bubble to the right */
+}
+
+.message-received {
+  text-align: left; /* Aligns text to the left */
+  width: 100%; /* Ensures the div takes full width */
+
+}
+.message-received .message-content-received {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 12px;
+  background-color: lightblue; /* Different color for received messages */
+  margin-left: auto; /* Pushes the message bubble to the left */
+}
+
+=======
   margin-left: auto; /* Pushes the message bubble to the right */
 }
+>>>>>>> parent of 3407065 (Final)
 #emtpty-div {
   height: 200px;
 }
@@ -376,7 +454,10 @@ footer {
   flex-direction: column; /* Stack children vertically */
 }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> parent of 3407065 (Final)
 /* Styles for the Posts Section */
 #posting-list {
   width: 100%;

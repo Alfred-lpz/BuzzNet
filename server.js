@@ -1,3 +1,79 @@
+<<<<<<< HEAD
+var messageStore = {}; 
+
+const express = require('express');
+const { exec } = require('child_process');
+const multer = require('multer');
+const sqlite3 = require('sqlite3').verbose();
+const os = require('os');
+const http = require('http');
+const WebSocket = require('ws');
+const path = require('path');
+
+const app = express();
+app.use(express.static('.')); // Serve static files
+
+let senderPort = 8080;
+let receiverPort = 8081;
+
+// Existing app.get for '/run-cpp-code'
+app.get('/run-cpp-code', function(req, res) {
+    // Existing code...
+});
+
+// Function to start server with Express and WebSocket
+function startServer(port) {
+    const server = http.createServer(app);
+    const wss = new WebSocket.Server({ server });
+
+    wss.on('connection', function connection(ws) {
+        // Send chat history to the new client
+        Object.keys(messageStore).forEach(chatPair => {
+            messageStore[chatPair].forEach(message => {
+                // Send each message as a raw message
+                ws.send(JSON.stringify(message));
+            });
+        });
+    
+        ws.on('message', function incoming(rawMessage) {
+            const message = JSON.parse(rawMessage);
+            const chatPair = message.sender + "_" + message.chatBoxId;
+    
+            // Store the message in the messageStore
+            if (!messageStore[chatPair]) {
+                messageStore[chatPair] = [];
+            }
+            messageStore[chatPair].push(message);
+    
+            // Broadcast the new message to all clients
+            wss.clients.forEach(function each(client) {
+                if (client.readyState === WebSocket.OPEN) {
+                    client.send(rawMessage); // Send the original message
+                }
+            });
+        });
+    });
+
+    // Start HTTP server with WebSocket integrated
+    server.listen(port, () => {
+        console.log(`Server listening on port ${port}`);
+        const url = `http://localhost:${port}`;
+        console.log(`Attempting to open ${url} in the browser...`);
+        import('open').then(open => {
+            open.default(url); 
+        }).catch(err => console.error('Failed to open URL:', err));
+    }).on('error', (err) => {
+        if (err.code === 'EADDRINUSE') {
+            console.log(`Port ${port} is in use, trying port ${port + 1}`);
+            senderPort += 2;
+            receiverPort += 2;
+            startServer(port + 1);
+        } else {
+            console.error(err);
+        }
+    });
+}
+=======
 const express = require('express');
 const { exec } = require('child_process');
 const multer = require('multer');
@@ -34,6 +110,7 @@ app.get('/run-cpp-code', (req, res) => {
     //res.send("Sender and Receiver started");
 });
 
+>>>>>>> parent of 3407065 (Final)
 
 // For posting
 
@@ -52,8 +129,11 @@ const upload = multer({ storage: storage });
 // Initialize SQLite database
 const db = new sqlite3.Database('buzznet.db');
 
+<<<<<<< HEAD
+=======
 app.use(express.static('.')); // Serve static files
 
+>>>>>>> parent of 3407065 (Final)
 app.post('/post', upload.single('image'), (req, res) => {
     const text = req.body.text;
     const file = req.file;
@@ -81,6 +161,44 @@ app.get('/posts', (req, res) => {
 // Delete post
 app.delete('/delete-post/:id', (req, res) => {
     const postId = req.params.id;
+<<<<<<< HEAD
+
+    // First, retrieve the image path
+    db.get(`SELECT image_path FROM posts WHERE id = ?`, postId, (err, row) => {
+        if (err) {
+            res.status(500).send(err.message);
+            return;
+        }
+
+        // Delete the post record
+        db.run(`DELETE FROM posts WHERE id = ?`, postId, function(err) {
+            if (err) {
+                res.status(500).send(err.message);
+                return;
+            }
+
+            // Delete the image file if it exists
+            if (row && row.image_path) {
+                const fs = require('fs');
+                const filePath = path.join(__dirname, row.image_path); // Ensure the path is correct
+                fs.unlink(filePath, (err) => {
+                    if (err) {
+                        console.error(`Failed to delete image: ${err.message}`);
+                    } else {
+                        console.log(`Deleted image: ${filePath}`);
+                    }
+                });
+            }
+
+            res.send('Post deleted');
+        });
+    });
+});
+
+
+startServer(3000);
+
+=======
     db.run(`DELETE FROM posts WHERE id = ?`, postId, function(err) {
       if (err) {
         res.status(500).send(err.message);
@@ -93,3 +211,4 @@ app.delete('/delete-post/:id', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+>>>>>>> parent of 3407065 (Final)

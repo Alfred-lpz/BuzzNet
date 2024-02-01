@@ -1,0 +1,10 @@
+^C:\USERS\SIMON\DOWNLOADS\TEST\STREAMING\BUILD\CMAKEFILES\D7B76AA79E22E4C1298DF4BDD7137444\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/simon/Downloads/test/streaming -BC:/Users/simon/Downloads/test/streaming/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/simon/Downloads/test/streaming/build/StreamingUDPVideo.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
