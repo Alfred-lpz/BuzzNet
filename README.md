@@ -60,13 +60,21 @@ For posting, you can input either text or pictures.
 
 ```mermaid
  classDiagram
+      RuntimeGraph <-- RuntimeOperator
       OperatorRegister <|-- RuntimeOperator
       RuntimeOperator <-- Layer
       Layer <-- RuntimeOperator 
+      class RuntimeGraph{
+      	- Operators
+        - topo_operators
+        - ...
+      	+ Build(input_name,output_name) void
+      	+ Forward(inputs,debug) Tensor
+      }
       class OperatorRegister{
       	- Global Registry
-      	+ Register Creator
-      	+ Layer Creator
+      	+ RegisterCreator(layer_type,creator) void
+      	+ LayerCreator(operator) Layer*
       }
       class RuntimeOperator{
       	- Tensor Array inputs
