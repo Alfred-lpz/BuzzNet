@@ -60,7 +60,7 @@ For posting, you can input either text or pictures.
 
 ```mermaid
  classDiagram
-      OperatorRegister <-- RuntimeOperator
+      OperatorRegister <|-- RuntimeOperator
       RuntimeOperator <-- Layer
       Layer <-- RuntimeOperator 
       class OperatorRegister{
