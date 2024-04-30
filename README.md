@@ -91,11 +91,14 @@ For posting, you can input either text or pictures.
       Layer <|-- MaxPoolingLayer
       class ReLULayer{
       + Forward(inputs,outputs) InferStatus
+      + GetInstance(op*,layer*) ParseParameterAttrStatus 
       }
        class ConvLayer{
       + Forward(inputs,outputs) InferStatus
+      + GetInstance(op*,layer*) ParseParameterAttrStatus 
       }
          class MaxPoolingLayer{
       + Forward(inputs,outputs) InferStatus
+      + GetInstance(op*,layer*) ParseParameterAttrStatus 
       }
 ```
