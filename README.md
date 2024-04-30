@@ -56,3 +56,38 @@ For posting, you can input either text or pictures.
 
 - For the best experience with video calling, ensure that two different devices are used.
 - If there are any issues or further clarifications needed, please refer to the project documentation or contact the project team.
+
+
+```mermaid
+ classDiagram
+      OperatorRegister <-- RuntimeOperator
+      RuntimeOperator <-- Layer
+      Layer <-- RuntimeOperator 
+      class OperatorRegister{
+      	- Global Registry
+      	+ Register Creator
+      	+ Layer Creator
+      }
+      class RuntimeOperator{
+      	- Tensor Array inputs
+      	- Tensor Array outputs
+      	- Layer Reference layer
+      }
+      class Layer{
+        - RuntimeOperator Reference runtime_operator
+      	+ Forward(void) InferStatus
+        + Forward(inputs,outputs) InferStatus
+      }
+      Layer <|-- ReLULayer
+      Layer <|-- ConvLayer
+      Layer <|-- MaxPoolingLayer
+      class ReLULayer{
+      + Forward(inputs,outputs) InferStatus
+      }
+       class ConvLayer{
+      + Forward(inputs,outputs) InferStatus
+      }
+         class MaxPoolingLayer{
+      + Forward(inputs,outputs) InferStatus
+      }
+```
